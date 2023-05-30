@@ -1,0 +1,15 @@
+Changes at 09-Jan-2022 according to New CR at Whatsapp by Yesmin Akter
+-----------------------------------------------------------------------
+
+1. Setup Form: Flat Name Entry
+2. Flat name id store korte hobe house_list table ey
+
+New Files Added:
+1. LFlatName entity added
+2. FlatNameEntryController added
+3. flatEntry/index.blade.php + flatEntry/flat_list.blade.php added
+
+Database:
+1. ALLOTMENT.L_FLAT_NAME_IU added
+2. allotment.house_entry modified
+3. Flat_ID column added in house_list table

@@ -1,0 +1,107 @@
+1. For SMS:
+=====================================
+src/config/banglalink-sms-gateway.php:
+
+return [
+    'user_id'  => 'CNSSMS',
+    'password' => 'Computer@123'
+];
+
+=====================================
+=====================================
+
+2. For Email:
+=====================================
+sendMail config:
+
+in .env file:
+
+MAIL_DRIVER=sendmail
+MAIL_HOST=localhost
+MAIL_PORT=2525
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
+MAIL_ENCRYPTION=null
+
+To work with email you need to run php artisan cache:clear.
+
+=====================================
+=====================================
+
+3. For Oracle Database:
+=====================================
+in .env file:
+
+DB_CONNECTION=pmis
+DB_HOST=192.168.78.1
+DB_PORT=1521
+DB_DATABASE=pmis
+DB_USERNAME=pmis
+DB_PASSWORD=pmis
+
+=====================================
+in src/config/oracle.php:
+
+return [
+    'cpa_security' => [
+            'driver'         => 'oracle',
+            'tns'            => env('DB_TNS', '(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.78.1)(PORT=1521))) (CONNECT_DATA=(SERVER=DEDICATED)(SID=dummydb)))'),
+            'host'           => env('DB_HOST', ''),
+            'port'           => env('DB_PORT', '1521'),
+            'database'       => env('DB_DATABASE', ''),
+            'username'       => env('DB_USERNAME', ''),
+            'password'       => env('DB_PASSWORD', ''),
+            'charset'        => env('DB_CHARSET', 'AL32UTF8'),
+            'prefix'         => env('DB_PREFIX', ''),
+            'prefix_schema'  => env('DB_SCHEMA_PREFIX', ''),
+            'edition'        => env('DB_EDITION', 'ora$base'),
+            'server_version' => env('DB_SERVER_VERSION', '11g'),
+        ],
+        'pmis' => [
+            'driver'         => 'oracle',
+            'tns'            => env('DB_TNS', '(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.78.1)(PORT=1521))) (CONNECT_DATA=(SERVER=DEDICATED)(SID=dummydb)))'),
+            'host'           => env('DB_HOST', ''),
+            'port'           => env('DB_PORT', '1521'),
+            'database'       => env('DB_DATABASE', ''),
+            'username'       => env('DB_USERNAME', ''),
+            'password'       => env('DB_PASSWORD', ''),
+            'charset'        => env('DB_CHARSET', 'AL32UTF8'),
+            'prefix'         => env('DB_PREFIX', ''),
+            'prefix_schema'  => env('DB_SCHEMA_PREFIX', ''),
+            'edition'        => env('DB_EDITION', 'ora$base'),
+            'server_version' => env('DB_SERVER_VERSION', '11g'),
+        ],
+        'ors' => [
+            'driver'         => 'oracle',
+            'tns'            => env('DB_TNS', '(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.78.1)(PORT=1521))) (CONNECT_DATA=(SERVER=DEDICATED)(SID=dummydb)))'),
+            'host'           => env('DB_HOST', ''),
+            'port'           => env('DB_PORT', '1521'),
+            'database'       => env('DB_DATABASE', ''),
+            'username'       => env('DB_USERNAME', ''),
+            'password'       => env('DB_PASSWORD', ''),
+            'charset'        => env('DB_CHARSET', 'AL32UTF8'),
+            'prefix'         => env('DB_PREFIX', ''),
+            'prefix_schema'  => env('DB_SCHEMA_PREFIX', ''),
+            'edition'        => env('DB_EDITION', 'ora$base'),
+            'server_version' => env('DB_SERVER_VERSION', '11g'),
+        ]
+];
+
+=====================================
+=====================================
+
+4. For BI report:
+=====================================
+in .env file:
+
+REPORT_EXECUTE_PATH=http://192.168.78.25:9502/xmlpserver/services/ReportService?wsdl
+REPORT_USERNAME=weblogic
+REPORT_PASSWORD=cns1234321
+=====================================
+in src/app/Services/Report/OraclePublisher.php,
+env('REPORT_USERNAME', 'weblogic'), // 'Guest' can be used with a null pwd
+env('REPORT_PASSWORD','cns1234321'),
+
+=====================================
+=====================================
+I just want to mark the location and format so that it makes easier to change later.

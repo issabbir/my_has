@@ -1,0 +1,8 @@
+.required:after {
+    content:" *";
+    color: red;
+}
+
+.grid-divider {
+    border-right: 1px solid gray;
+}
